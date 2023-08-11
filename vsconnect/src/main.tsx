@@ -17,6 +17,7 @@ import CadastroServico from './pages/CadastroServico';
 import ListaDevs from './pages/ListaDevs';
 import Login from './pages/Login';
 import './index.css';
+import Footer from './components/Footer';
 
 //estilização global
 import "./index.css";
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Router>
       <Header />
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/lista/servicos' element={<ListaServicos />} />
@@ -33,6 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/lista/devs' element={<ListaDevs />} />
         <Route path='/login' element={<Login />} />
       </Routes>
+      <Footer />
     </Router>
   </React.StrictMode>,
 )
