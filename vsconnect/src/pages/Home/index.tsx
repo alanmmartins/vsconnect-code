@@ -2,7 +2,7 @@
 import "./style.css";
 
 //imagens
-import imgLogo from "../../assets/images/logo.svg";
+/* import imgLogo from "../../assets/images/logo.svg"; */
 import imgClientes from "../../assets/images/clientes.png";
 import imgMaosDev from "../../assets/images/maos_dev.png";
 import imgAlfinete from "../../assets/images/alfinete.png";
