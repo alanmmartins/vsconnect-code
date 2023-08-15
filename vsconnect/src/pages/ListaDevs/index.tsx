@@ -32,7 +32,37 @@ function ListaDevs() {
               nome: "Aléxia Vitória",
               email: "alexia@email.com",
               skills: ["PYTHON", "VUE", "React"]
-          }
+          },
+         /*  {
+            img_perfil: "https://github.com/FiamaBrenda.png",
+            nome: "FIFIFIFIF",
+            email: "FIFIFIF@email.com",
+            skills: ["PYTHON", "VUE", "React"]
+        },
+        {
+            img_perfil: "https://github.com/GustavoHenriqueFerreira.png",
+            nome: "GUUUUSSSSTT",
+            email: "GUGUGUGU@email.com",
+            skills: ["GIT", "GITHUB","VUE", "React"]
+        },
+        {
+            img_perfil: "https://github.com/FabricioMitsuo.png",
+            nome: "MITSUUUO",
+            email: "MTSUOO@email.com",
+            skills: ["GIT", "GITHUB","VUE", "React"]
+        },
+          {
+            img_perfil: "https://github.com/sabrinadotsantos.png",
+            nome: "my friend",
+            email: "sasasasasa@email.com",
+            skills: ["PYTHON", "VUE", "React"]
+        },
+          {
+            img_perfil: "https://github.com/alanmmartins.png",
+            nome: "Alan Munoz Martins",
+            email: "alanmmartins@gmail.com",
+            skills: ["PYTHON", "HTML", "React"]
+        } */
       ]);
     return (
         <>
@@ -57,14 +87,24 @@ function ListaDevs() {
                         </form>
                         <div className="wrapper_lista">
                             <ul>
-                                
+                                {
+                                    devs.map((dev:any, indice:number)=>{
+                                        return<li key= {indice}>
+                                            <CardDev 
+                                            foto={dev.img_perfil}
+                                            nome={dev.nome}
+                                            email={dev.email}
+                                            listatechs={dev.skills}/>
+                                        </li>
+                                    })
+                                }
                             </ul>
                         </div>
                     </div>
                 </div>
             </main>
 
-            <Footer />
+           {/*  <Footer /> */}
         </>
     )
 }

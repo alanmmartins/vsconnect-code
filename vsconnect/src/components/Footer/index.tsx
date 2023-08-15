@@ -21,6 +21,7 @@ function Footer() {
                             <li><Link to={'/'}>Home</Link></li>
                             <li><Link to={'/lista/servicos'}>Listar Serviços</Link></li>
                             <li><Link to={'/cadastro/usuario'}>Cadastrar Cliente</Link></li>
+                            <li><Link to={'/lista/devs'}>Lista desenvolvedores</Link></li>
                             <li><Link to={'/cadastro/usuario'}>Cadastrar Desenvolvedor</Link></li>
                         </ul>
                     </div>
