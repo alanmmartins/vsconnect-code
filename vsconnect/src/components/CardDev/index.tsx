@@ -1,8 +1,8 @@
+//estilização
 import "./style.css";
 
-function CardDev(props:any) {
-    return(
-
+function CardDev(props: any) {
+    return (
         <div className="dev">
             <div className="grupo_contato">
                 <img src={props.foto} alt="" />
@@ -12,9 +12,10 @@ function CardDev(props:any) {
                 </div>
             </div>
             <div className="techs">
+
                 {
-                    props.listatechs.map((tech:string,indice:number)=>{
-                        return <span key ={indice}>{tech}</span>
+                    props.listaTechs.map((tech: string, indice: number) => {
+                        return <span key={indice}>{tech}</span>
                     })
                 }
 
@@ -23,8 +24,7 @@ function CardDev(props:any) {
                 <span>React</span> */}
             </div>
         </div>
-
     );
-
 }
+
 export default CardDev;

@@ -1,17 +1,3 @@
-#sombra{
-    position: fixed;
-    top: 0;
-    right: 110vW;
-    background-color: rgba(0,0,0,0.65);
-
-    width: 130vw;
-    height: 100vh;
-    z-index: 1;
-    overflow: hidden;
-    transition: .5s;
-    backdrop-filter: blur(10px);
-}
-
 /* HEADER */
 header {
     background-color: var(--azulP);
@@ -33,7 +19,7 @@ header {
     width: 50px;
 }
 
-.barras{
+.barras {
     /* border-top: 5px solid var(--branco); */
     width: 40px;
     height: 5px;
@@ -45,7 +31,7 @@ header {
     transition: .5s;
 }
 
-.barras::after{
+.barras::after {
     content: '';
     display: block;
     width: 40px;
@@ -57,7 +43,7 @@ header {
     transition: .5s;
 }
 
-.barras::before{
+.barras::before {
     content: '';
     display: block;
     width: 40px;
@@ -69,17 +55,17 @@ header {
     transition: .5s;
 }
 
-.ativo .barras{
+.ativo .barras {
     /* background-color: transparent; */
     transform: rotate(135deg);
 }
 
-.ativo .barras::after{
+.ativo .barras::after {
     transform: rotate(-270deg);
     top: 0;
 }
 
-.ativo .barras::before{
+.ativo .barras::before {
     /* transform: rotate(90deg); */
     top: 0;
 }
@@ -119,7 +105,7 @@ header nav a {
     font-family: var(--font1);
 }
 
-.header_icone_login{
+.header_icone_login {
     display: none;
 }
 
@@ -130,7 +116,7 @@ header nav a {
         display: initial;
     }
 
-    .header_logo{
+    .header_logo {
         /* margin-left: 55px; */
     }
 
@@ -164,7 +150,7 @@ header nav a {
         width: auto;
     }
 
-    .header_botao_login{
+    .header_botao_login {
         display: none;
     }
 
