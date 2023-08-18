@@ -21,7 +21,7 @@ function ListaServicos() {
 
         }
         setServicoDigitado(event.target.value);
-        console.log(servicoDigitado);
+       
 
     }
 
@@ -32,7 +32,7 @@ function ListaServicos() {
         const servicosFiltrado = servicos.filter((servico: any) => servico.techs.includes(servicoDigitado.toLocaleUpperCase()));
 
         if (servicosFiltrado.length === 0) {
-            alert("Nenhum desenvolvedor(a) com essa skill :(")
+            alert("Nenhum servico(a) com essa skill :(")
         } else {
 
             /* setListaServicosFiltrados(servicosFiltrado); */
