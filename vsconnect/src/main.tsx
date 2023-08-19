@@ -7,7 +7,7 @@ import ListaServicos from "./pages/ListaServicos/";
 import ListaDevs from "./pages/ListaDevs";
 import Footer from "./components/Footer"
 import Header from './components/Header';
-import PerfilUsuario from "./pages/PerfilUsuario";
+import Perfil from "./pages/PerfilUsuario";
 //estilização global
 import "./index.css";
 
@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='lista/servicos' element={<ListaServicos />} />
 
         <Route path='lista/devs' element={<ListaDevs />} />
-        <Route path='Perfil/:idUsuario' element={<PerfilUsuario/>} />
+        <Route path='Perfil/:idUsuario' element={<Perfil/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
