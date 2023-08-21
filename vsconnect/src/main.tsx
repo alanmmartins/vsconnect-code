@@ -7,7 +7,7 @@ import ListaServicos from "./pages/ListaServicos/";
 import ListaDevs from "./pages/ListaDevs";
 import Footer from "./components/Footer"
 import Header from './components/Header';
-import Perfil from "./pages/PerfilUsuario";
+import Perfil from "./pages/PerfilUsuario"
 //estilização global
 import "./index.css";
 

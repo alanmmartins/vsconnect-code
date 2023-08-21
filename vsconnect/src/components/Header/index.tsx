@@ -39,8 +39,8 @@ function Header() {
             <header>
                 <div className="container header_conteudo">
                     <Link className="menu_barras" id="menu_barras" aria-label="abrir menu" aria-expanded="false" aria-controls="menu_links" aria-haspopup="true" onClick={mostrarMenu} to="#"><div className="barras"></div></Link>
-                    <Link to="/">
-                    <img className="header_logo" src={imgLogo} alt="" /></Link>
+                   {/*  <Link to="/"> */}
+                    <img className="header_logo" src={imgLogo} alt="" />{/* </Link> */}
                     <nav>
                         <div id="menu_links" className="menu_links">
                             <Link to="/">home</Link>
