@@ -62,7 +62,6 @@ function PerfilUsuario() {
                     <div className="contato_local">
                         <div className="contato">
                             <p>Email para contato: </p>
-                            <Link to={"mailto: " + { email }}>{email}</Link>
                         </div>
                         <div className="local">
                             <svg

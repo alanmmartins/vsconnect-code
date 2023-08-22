@@ -92,8 +92,8 @@ function ListaServicos() {
                                     servicos.map((servicos: any, indice: number) => {
                                         return <li key={indice}>
                                             <CardServico
-
-                                                titulo={servicos.titulo}
+                                                id={servicos.id}
+                                                titulo={servicos.nome}
                                                 descricao={servicos.descricao}
                                                 proposta={servicos.proposta}
                                                 techs={servicos.techs} />

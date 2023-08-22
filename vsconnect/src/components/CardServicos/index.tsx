@@ -1,12 +1,15 @@
 import "./style.css";
-function CardServico(props: any) {
+import { Link  } from "react-router-dom";
+function CardServicos(props: any) {
     return (
         
   
         <div className="servico">
             <div className="topo_servico">
-                <h3>{props.titulo}</h3>
-                <span>R$ {props.proposta}</span>
+                
+            <Link to = {"/Visualizar/"+ props.id}> <h2>{props.titulo}</h2> </Link>
+                
+               <span>R${props.proposta}</span>
             </div>
             <p>{props.descricao}</p>
             <div className="techs">
@@ -24,4 +27,4 @@ function CardServico(props: any) {
 
     )
 }
-export default CardServico;
+export default CardServicos;
