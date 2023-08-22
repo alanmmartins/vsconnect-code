@@ -44,7 +44,7 @@ function VisualizarServico() {
     return (
         <main id="main_visualizarservico">
             <div className="container">
-            <Link to = {"lista/servicos/"}> <h1>Serviço</h1> </Link>
+            <Link to = {"/lista/servicos"}> <h1>Serviço</h1> </Link>
                 
                 
                 <div className="servico">
