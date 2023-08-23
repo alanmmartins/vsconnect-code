@@ -9,6 +9,8 @@ import Footer from "./components/Footer"
 import Header from './components/Header';
 import Perfil from "./pages/PerfilUsuario"
 import Servico from "./pages/VisualizarServico"
+import CadastroUsuario from './pages/CadastroUsuario';
+
 
 //estilização global
 import "./index.css";
@@ -26,6 +28,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='lista/devs' element={<ListaDevs />} />
         <Route path='Visualizar/:idServico' element={<Servico/>} />
         <Route path='Perfil/:idUsuario' element={<Perfil/>} />
+        <Route path='Cadastro/Usuario' element={<CadastroUsuario/>} />
+
       </Routes>
       <Footer />
     </BrowserRouter>
