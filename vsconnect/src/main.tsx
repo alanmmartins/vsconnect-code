@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Perfil from "./pages/PerfilUsuario"
 import Servico from "./pages/VisualizarServico"
 import CadastroUsuario from './pages/CadastroUsuario';
+import CadastroServico from './pages/CadastroServico';
 
 
 //estilização global
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='Visualizar/:idServico' element={<Servico/>} />
         <Route path='Perfil/:idUsuario' element={<Perfil/>} />
         <Route path='Cadastro/Usuario' element={<CadastroUsuario/>} />
+        <Route path='Cadastro/Servico' element={<CadastroServico/>} />
 
       </Routes>
       <Footer />

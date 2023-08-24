@@ -61,7 +61,7 @@ function CadastroUsuario() {
         // stringfy = pega lista que transfoma em string ex. [] > "[]"
 
         //post cadastrar
-        api.post("users/", formData)
+        api.post("users", formData)
             .then((response: any) => {
                 console.log(response);
                 alert("Usuário cadastrado com sucesso :)");
@@ -70,6 +70,8 @@ function CadastroUsuario() {
                 console.log(error);
                 alert("Falha ao cadastrar usuário");
             })
+        console.log(formData);
+
 
 
     }
