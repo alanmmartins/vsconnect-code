@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-//componentes
+//componentes//
 import Home from "./pages/Home/";
 import ListaServicos from "./pages/ListaServicos/";
 import ListaDevs from "./pages/ListaDevs";
