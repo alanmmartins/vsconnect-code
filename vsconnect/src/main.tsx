@@ -11,6 +11,7 @@ import Perfil from "./pages/PerfilUsuario"
 import Servico from "./pages/VisualizarServico"
 import CadastroUsuario from './pages/CadastroUsuario';
 import CadastroServico from './pages/CadastroServico';
+import Login from './pages/Login';
 
 
 //estilização global
@@ -19,18 +20,34 @@ import "./index.css";
 //rotas
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import securelocalStorage from "react-secure-storage";
+
+function logado() {
+  if (securelocalStorage.getItem("user")) {
+    const objetoUsuario: any = securelocalStorage.getItem("user");
+    
+    const nome:string = objetoUsuario.user.nome.trim().split(" ")[0];
+    return{
+      logado:true,nomeUsuario:nome}
+
+  }
+ /*  else{logado:false,nomeUsuario:null} */
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter> {/*Indica que aplicação terá rotas*/}
-      <Header />
+      <Header usuario={logado()}/>
       <Routes>{/*Indica uma lista de rotas*/}
         <Route path='/' element={<Home />} /> {/*Indica o caminho do componente e o nome da rota dele*/}
+
         <Route path='lista/servicos' element={<ListaServicos />} />
         <Route path='lista/devs' element={<ListaDevs />} />
         <Route path='Visualizar/:idServico' element={<Servico/>} />
         <Route path='Perfil/:idUsuario' element={<Perfil/>} />
         <Route path='Cadastro/Usuario' element={<CadastroUsuario/>} />
         <Route path='Cadastro/Servico' element={<CadastroServico/>} />
+        <Route path='login' element={<Login/>} />
 
       </Routes>
       <Footer />
