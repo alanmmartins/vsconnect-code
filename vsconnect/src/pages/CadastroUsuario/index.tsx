@@ -3,9 +3,9 @@ import "./style.css";
 
 //Hook
 import { useState } from "react";
+
+//axios
 import api from "../../utils/api";
-
-
 
 function CadastroUsuario() {
 
@@ -25,28 +25,23 @@ function CadastroUsuario() {
     const [nome, setNome] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [senha, setSenha] = useState<string>("");
-    const [foto, setFoto] = useState<any>(); //valor inicial undefined
     const [cep, setCep] = useState<string>("");
+    const [foto, setFoto] = useState<any>(); //valor inicial undefined
     const [logradouro, setLogradouro] = useState<string>("");
     const [numero, setNumero] = useState<string>("");
     const [bairro, setBairro] = useState<string>("");
     const [cidade, setCidade] = useState<string>("");
     const [uf, setUf] = useState<string>("");
 
-    function verificarCampoUpload(event: any) {
-        console.log(event.target.files[0]);  //na lista files pegar o primeiro item posiçao 0
-        //atualiza o state foto com o valor do file
-        setFoto(event.target.files[0]);
-    }
 
-    //usar a funçao na form
     function cadastrarUsuario(event: any) {
         event.preventDefault();
-        //utilizando o form data por causa da foto (arquivos) | para dados simples montar um objeto normal
+
+        //só utiliza formData quando tiver arquivos 
         const formData = new FormData();
 
-        //acessando o objeto:
-        //append inserindo propriedade
+
+        //A chave da função do append() precisa ser o mesmo nome do atributo que api retorna
         formData.append("nome", nome);
         formData.append("email", email);
         formData.append("password", senha);
@@ -58,22 +53,23 @@ function CadastroUsuario() {
         formData.append("cidade", cidade);
         formData.append("uf", uf);
         formData.append("hardSkills", JSON.stringify(skillsSelecionadas));
-        // stringfy = pega lista que transfoma em string ex. [] > "[]"
 
-        //post cadastrar
         api.post("users", formData)
             .then((response: any) => {
                 console.log(response);
-                alert("Usuário cadastrado com sucesso :)");
+                alert("Usuário cadastrado com sucesso!😊🤗");
             })
             .catch((error: any) => {
                 console.log(error);
-                alert("Falha ao cadastrar usuário");
+                alert("Falha ao cadastrar um novo usuário");
             })
-        console.log(formData);
 
+    }
 
-
+    function verificarCampoUpload(event: any) {
+        console.log(event.target.files[0]);
+        //atualiza o state foto com o valor do file
+        setFoto(event.target.files[0]);
     }
 
     //Funçao para colocar mascara no input de CEP
@@ -135,7 +131,6 @@ function CadastroUsuario() {
                                 type="text"
                                 id="nome"
                                 placeholder="Digite aqui seu nome:"
-                                //arrowfunction = função fantasma / direto no evento
                                 onChange={(e) => setNome(e.target.value)}
                                 required
                             />
@@ -166,7 +161,7 @@ function CadastroUsuario() {
                             <input
                                 type="file"
                                 id="foto"
-                                onChange={verificarCampoUpload} //acionar a função verificar campo upload
+                                onChange={verificarCampoUpload}
                                 required
                             />
                         </div>
@@ -268,8 +263,9 @@ function CadastroUsuario() {
                                                 name=""
                                                 id="cad_select_skill"
                                                 onChange={(e) => setSelect(e.target.value)}
+                                                defaultValue={select}
                                             >
-                                                <option selected disabled value="">Selecione</option>
+                                                <option disabled value="">Selecione</option>
                                                 {
                                                     techs.map((tech: any, index: number) => {
                                                         return <option key={index} value={tech}>{tech}</option>
@@ -318,3 +314,6 @@ function CadastroUsuario() {
 }
 
 export default CadastroUsuario;
+
+
+

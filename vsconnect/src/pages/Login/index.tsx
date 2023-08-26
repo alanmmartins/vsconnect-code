@@ -1,21 +1,22 @@
-//hooks
-import { useEffect, useState } from "react";
 //estilização
 import "./style.css";
+
+//hooks
+import { useState, useEffect } from "react";
 
 //axios
 import api from "../../utils/api";
 
+//rotas
 import { useNavigate } from "react-router-dom";
-//Local storage 
-import securelocalStorage from "react-secure-storage";
 
-
+//localStorage
+import secureLocalStorage from "react-secure-storage";
 
 function Login() {
-    //variavel que utiliza  a funcao para navigation entee os componentes 
 
-    const navegate = useNavigate();
+    //Variavel navigate que utiliza a função useNavigate para navegar entre os componentes
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState<string>("");
     const [senha, setSenha] = useState<string>("");
@@ -29,23 +30,22 @@ function Login() {
         };
 
         api.post("login", usuario)
-        .then((response: any) => {
-            securelocalStorage.setItem("user", response.data);
-            //redireciionar componente perfil 
-            navegate("/perfil/"+ response.data.user.id);
-            //recarrega a tela
-            navegate(0);
-            
-            alert("Login com sucesso :)");
-            console.log(response.data);
-        })
-        .catch((error: any) => {
-            alert("Falha ao se logar");
-            console.log(error);
-        })
-   
+            .then((response: any) => {
+                console.log(response.data);
+
+                secureLocalStorage.setItem("user", response.data);
+
+                //redirecionar ao componente perfil
+                navigate("/perfil/" + response.data.user.id);
+                //recarrega a tela
+                navigate(0);
+
+            })
+            .catch((error: any) => {
+                alert("Erro ao tentar se logar! :(");
+            })
+
     }
-    //consumo api
 
     return (
         <main id="main_login">

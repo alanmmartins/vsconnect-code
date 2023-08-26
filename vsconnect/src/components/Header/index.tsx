@@ -7,7 +7,7 @@ import imgLogo from "../../assets/images/logo.svg";
 //rotas
 import { Link } from "react-router-dom";
 
-function Header( props:any ) {
+function Header(props: any) {
 
     // Mostrar menu no layout responsivo
     function mostrarMenu() {
@@ -39,8 +39,7 @@ function Header( props:any ) {
             <header>
                 <div className="container header_conteudo">
                     <Link className="menu_barras" id="menu_barras" aria-label="abrir menu" aria-expanded="false" aria-controls="menu_links" aria-haspopup="true" onClick={mostrarMenu} to="#"><div className="barras"></div></Link>
-                   {/*  <Link to="/"> */}
-                    <img className="header_logo" src={imgLogo} alt="" />{/* </Link> */}
+                    <img className="header_logo" src={imgLogo} alt="" />
                     <nav>
                         <div id="menu_links" className="menu_links">
                             <Link to="/">home</Link>
@@ -56,14 +55,21 @@ function Header( props:any ) {
                         </Link>
 
                         {
-                            props.usuario.logado? //se sim
-                            <span>Ola , {props.usuario.nomeUsuario}</span> //aparece a mensagem
-                            : //se nao
-                            <Link className="header_botao_login" to="/login">login</Link>//aparece a mensagem
-                            
+                            props.usuario.logado ?
+                                <span>Olá, {props.usuario.nomeUsuario}</span>
+                                :
+                                <Link className="header_botao_login" to="/login">login</Link>
                         }
 
-                        
+                        {/* 
+                            if (props.usuario.logado) {
+                                return <span>Olá, {props.usuario.nomeUsuario}</span> 
+                            }else{
+                                return <Link className="header_botao_login" to="/login">login</Link>
+                            }
+                         */}
+
+
                     </nav>
                 </div>
             </header>

@@ -1,20 +1,25 @@
 //rotas
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import api from "../../utils/api";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
+//hooks
+import { useEffect, useState } from "react";
 
 //estilização
 import "./style.css";
 
+//axios
+import api from "../../utils/api";
 
+//localStorage
+import secureLocalStorage from "react-secure-storage";
 
 
 function PerfilUsuario() {
 
-    const { idUsuario } = useParams(); // acessando o id usuario
+    const { idUsuario } = useParams();
 
-    // dados dos usuario, retornar na api 
+    const navigate = useNavigate();
+
 
     const [nome, setNome] = useState<string>("");
     const [foto, setFoto] = useState<string>("");
@@ -24,28 +29,40 @@ function PerfilUsuario() {
     const [listaSkills, setListaSkills] = useState<string[]>([]);
 
 
-
     function buscarUsuarioPorID() {
-        //estrutura basica para consumir api
-
+        //estrutura basica para consumir API
         api.get("users/" + idUsuario)
             .then((response: any) => {
+                console.log(response);
+
+                //seta os valores referente as informações do usuario
                 setNome(response.data.nome);
                 setFoto(response.data.user_img);
                 setEmail(response.data.email);
                 setCidade(response.data.cidade);
                 setUf(response.data.uf);
-                setListaSkills(response.data.hardSkills);
+                
+                if (typeof response.data.hardSkills === "string") {
+                    return setListaSkills(JSON.parse(response.data.hardSkills));
+                } else {
+                    return setListaSkills(response.data.hardSkills);;
+                }
+
+
             })
-            .catch ((error: any) => console.log(error));
-            
+            .catch((error: any) => console.log(error))
+
+    }
+
+    function deslogar() {
+        secureLocalStorage.removeItem("user");
+        navigate("/login");
+        navigate(0);
     }
 
     useEffect(() => {
         buscarUsuarioPorID();
-    }, []); //[]monitorar
-
-
+    }, []);
 
     return (
         <main id="main_perfilusuario">
@@ -55,14 +72,16 @@ function PerfilUsuario() {
 
                     <div className="topo_dev">
                         <img
-                            src={"http://localhost:3000/static/" + foto} alt={"Foto de perfil de " + nome} />
+                            src={"http://localhost:3000/static/" + foto}
+                            alt={"Foto de perfil de " + nome}
+                        />
                         <h2>{nome}</h2>
                     </div>
 
                     <div className="contato_local">
                         <div className="contato">
                             <p>Email para contato: </p>
-                            <Link to={"mailto: " + { email }}>{email}</Link>
+                            <Link to={"mailto:" + email}>{email}</Link>
                         </div>
                         <div className="local">
                             <svg
@@ -81,16 +100,14 @@ function PerfilUsuario() {
                         <p>Tecnologias principais: </p>
                         <div className="lista_skills">
                             {
-                                listaSkills.map((tech: string, indice: number) => {
-
-                                    return <span key={indice}> {tech} </span>
+                                listaSkills.map((tech: string, index: number) => {
+                                    return <span key={index}>{tech}</span>
                                 })
                             }
-
                         </div>
                     </div>
                     <footer>
-                        <Link to={"/"}>
+                        <Link to={"/login"} onClick={deslogar}>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 512 512">{/*  Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. */}
                                 <path

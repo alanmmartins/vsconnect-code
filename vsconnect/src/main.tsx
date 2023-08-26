@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-//componentes//
+//componentes
 import Home from "./pages/Home/";
 import ListaServicos from "./pages/ListaServicos/";
 import ListaDevs from "./pages/ListaDevs";
-import Footer from "./components/Footer"
-import Header from './components/Header';
-import Perfil from "./pages/PerfilUsuario"
-import Servico from "./pages/VisualizarServico"
+import Perfil from "./pages/PerfilUsuario";
+import VisualizarServico from "./pages/VisualizarServico";
 import CadastroUsuario from './pages/CadastroUsuario';
 import CadastroServico from './pages/CadastroServico';
 import Login from './pages/Login';
-
+import Footer from "./components/Footer"
+import Header from './components/Header';
 
 //estilização global
 import "./index.css";
@@ -20,35 +19,39 @@ import "./index.css";
 //rotas
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import securelocalStorage from "react-secure-storage";
+//
+import secureLocalStorage from 'react-secure-storage';
 
 function logado() {
-  if (securelocalStorage.getItem("user")) {
-    const objetoUsuario: any = securelocalStorage.getItem("user");
-    
-    const nome:string = objetoUsuario.user.nome.trim().split(" ")[0];
-    return{
-      logado:true,nomeUsuario:nome}
+  if (secureLocalStorage.getItem("user")) {
+    const objetoUsuario: any = secureLocalStorage.getItem("user");
 
+    const nome: string = objetoUsuario.user.nome.trim().split(" ")[0];
+
+    return { logado: true, nomeUsuario: nome }
   }
- /*  else{logado:false,nomeUsuario:null} */
+  else {
+    return { logado: false, nomeUsuario: null }
+  }
 }
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter> {/*Indica que aplicação terá rotas*/}
-      <Header usuario={logado()}/>
+      <Header usuario={logado()} />
       <Routes>{/*Indica uma lista de rotas*/}
         <Route path='/' element={<Home />} /> {/*Indica o caminho do componente e o nome da rota dele*/}
-
         <Route path='lista/servicos' element={<ListaServicos />} />
-        <Route path='lista/devs' element={<ListaDevs />} />
-        <Route path='Visualizar/:idServico' element={<Servico/>} />
-        <Route path='Perfil/:idUsuario' element={<Perfil/>} />
-        <Route path='Cadastro/Usuario' element={<CadastroUsuario/>} />
-        <Route path='Cadastro/Servico' element={<CadastroServico/>} />
-        <Route path='login' element={<Login/>} />
 
+        <Route path='lista/devs' element={<ListaDevs />} />
+
+        {/* Rota com parametro, indicando o identificador do desenvolvedor */}
+        <Route path='perfil/:idUsuario' element={<Perfil />} />
+        <Route path='visualizar/servico/:idServico' element={<VisualizarServico />} />
+        <Route path='cadastro/usuario' element={<CadastroUsuario />} />
+        <Route path='cadastro/servico' element={<CadastroServico />} />
+        <Route path='login' element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>
